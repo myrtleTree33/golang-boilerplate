@@ -1,0 +1,29 @@
+{
+  "packages": [
+    "go@1.22.0",
+    "nodejs@latest",
+    "pre-commit@latest",
+    "golangci-lint@latest",
+    "goimports@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to devbox!' > /dev/null",
+      "echo 'installing dependencies...'",
+      "go install github.com/cosmtrek/air@latest",
+      "export GOMODCACHE=$(go env GOMODCACHE)",
+      "export GOCACHE=$(go env GOCACHE)",
+      "export PATH=$(go env GOPATH)/bin:$PATH",
+      "(cd backend && pre-commit autoupdate && pre-commit install)",
+      "clear",
+      "echo '-------------------------------------------------'",
+      "echo 'Welcome to Golang Boilerplate dev environment!'",
+      "echo '-------------------------------------------------'"
+    ],
+    "scripts": {
+      "test": [
+        "echo \"Error: no test specified\" && exit 1"
+      ]
+    }
+  }
+}
